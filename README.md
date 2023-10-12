@@ -19,4 +19,4 @@ ensure sc_package
 Add the SQL file to your database
 
 
-You have problems with the script? Support is available here: [Discord](https://discord.gg/Mqgewse3Yc)
+### You have problems with the script? Support is available here: [Discord](https://discord.gg/Mqgewse3Yc)
