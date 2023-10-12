@@ -1,5 +1,7 @@
 # sc_package
 
+![Thumbnail (2)](https://github.com/ScubeScripts/sc_package/assets/104854776/cf62c5bb-90ff-4f34-a2f4-747138064185)
+
 ### What does the script do?
 - The script adds the item 'package' to your server
 - In the config.lua you can set what should be inside the packages and how much
