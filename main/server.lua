@@ -33,7 +33,7 @@ function CheckVersion()
                 print("^7[^2INFO^7] ^7sc_package is up to date! ^7(^2".. latestVersion .."^7)")
             end
         else
-            print("^8Error retrieving version data.")
+            print("^7[^8ERROR^7] Version data retrieval not possible!")
         end
     end)
 end
