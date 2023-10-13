@@ -4,10 +4,13 @@ local versionChecked = false
 function CheckVersion()
     if not versionChecked then
         versionChecked = true
+
         PerformHttpRequest(githubRepoURL, function(errorCode, resultData, resultHeaders)
+            local fxmanifest = LoadResourceFile(GetCurrentResourceName(), "fxmanifest.lua")
+            local version = fxmanifest:match('version%s+"(.-)"')
+
             if errorCode == 200 then
                 local remoteVersion = string.gsub(resultData, "\n", "")
-                local latestVersion = GetResourceMetadata(GetCurrentResourceName(), 'version', 0)
 
                 if remoteVersion ~= latestVersion then
                     print("^7[^1INFO^7] ^3sc_package is outdated. Please update to the latest version. ^7(^2".. remoteVersion .."^7)^3 https://github.com/ScubeScripts/sc_package")
