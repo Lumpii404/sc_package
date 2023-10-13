@@ -15,7 +15,7 @@ function CheckVersion()
                 if remoteVersion ~= version then
                     print("^7[^1INFO^7] ^3sc_package is outdated. Please update to the latest version. ^7(^2".. remoteVersion .."^7)^3 https://github.com/ScubeScripts/sc_package")
                 else
-                    print("^7[^2INFO^7] ^7sc_package is up to date! ^7(^2".. latestVersion .."^7)")
+                    print("^7[^2INFO^7] ^7sc_package is up to date! ^7(^2".. version .."^7)")
                 end
             else
                 print("^7[^8ERROR^7] Version data retrieval not possible!")
