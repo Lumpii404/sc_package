@@ -12,7 +12,7 @@ function CheckVersion()
             if errorCode == 200 then
                 local remoteVersion = string.gsub(resultData, "\n", "")
 
-                if remoteVersion ~= latestVersion then
+                if remoteVersion ~= version then
                     print("^7[^1INFO^7] ^3sc_package is outdated. Please update to the latest version. ^7(^2".. remoteVersion .."^7)^3 https://github.com/ScubeScripts/sc_package")
                 else
                     print("^7[^2INFO^7] ^7sc_package is up to date! ^7(^2".. latestVersion .."^7)")
