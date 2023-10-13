@@ -1,10 +1,10 @@
 fx_version 'cerulean'
 game 'gta5'
 
-name "sc_package"
-author "Scube Scripts"
+name 'sc_package'
+author 'Scube Scripts'
 version '1.0.1'
-description "This script allows you to create packages and get any items from them."
+description 'This script allows you to create packages and get any items from them.'
 
 client_scripts {
     'config.lua',
@@ -13,7 +13,7 @@ client_scripts {
 
 server_scripts {
     'config.lua',
-    "main/function.lua",
+    'main/function.lua',
     'main/server.lua'
 }
  
