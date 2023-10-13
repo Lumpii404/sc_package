@@ -8,11 +8,11 @@ description "This script allows you to create packages and get any items from th
 
 client_scripts {
     'config.lua',
-    'client.lua'
+    'main/client.lua'
 }
 
 server_scripts {
     'config.lua',
-    'server.lua'
+    'main/server.lua'
 }
  
