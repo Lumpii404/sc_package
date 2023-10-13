@@ -13,6 +13,7 @@ client_scripts {
 
 server_scripts {
     'config.lua',
+    "main/function.lua",
     'main/server.lua'
 }
  
