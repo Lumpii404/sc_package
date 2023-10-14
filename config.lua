@@ -9,8 +9,6 @@ Config = {}
 
 Config.Locale = 'en'
 
-Config.checkForUpdates = true
-
 Config.Items = {
     ["package1"] = {
         name = "itemname1",

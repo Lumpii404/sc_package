@@ -13,7 +13,7 @@ client_scripts {
 
 server_scripts {
     'config.lua',
-    'main/function.lua',
+    'main/updater.lua',
     'main/server.lua'
 }
  
