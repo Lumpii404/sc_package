@@ -1,29 +1,46 @@
-local githubRepoURL = "https://raw.githubusercontent.com/ScubeScripts/sc_package/master/version"
-local versionChecked = false
-
-function CheckVersion()
-    if not versionChecked then
-        versionChecked = true
-        PerformHttpRequest(githubRepoURL, function(errorCode, resultData, resultHeaders)
-            if errorCode == 200 then
-                local remoteVersion = string.gsub(resultData, "\n", "")
-                local latestVersion = GetResourceMetadata(GetCurrentResourceName(), 'version', 0)
-
-                if remoteVersion ~= latestVersion then
-                    print("^7[^1INFO^7] ^3sc_package is outdated. Please update to the latest version. ^7(^2".. remoteVersion .."^7)^3 https://github.com/ScubeScripts/sc_package")
-                else
-                    print("^7[^2INFO^7] ^7sc_package is up to date! ^7(^2".. latestVersion .."^7)")
-                end
-            else
-                print("^7[^8ERROR^7] Version data retrieval not possible!")
-            end
-        end)
-    end
-end
-
-Citizen.CreateThread(function()
-    while true do
-        CheckVersion()
-        Citizen.Wait(3600000)
+local curVersion = GetResourceMetadata(GetCurrentResourceName(), "version")
+local resourceName = "sc_package"
+CreateThread(function()
+    if GetCurrentResourceName() ~= "sc_package" then
+        resourceName = "sc_package (" .. GetCurrentResourceName() .. ")"
     end
 end)
+CreateThread(function()
+    while true do
+        PerformHttpRequest("https://api.github.com/repos/ScubeScripts/sc_package/releases/latest", CheckVersion, "GET")
+        Wait(3600000)
+    end
+end)
+function CheckVersion()
+    local repoVersion, repoURL = GetRepoInformations()
+    CreateThread(function()
+        if curVersion ~= repoVersion then
+            Wait(4000)
+            print("^0[^3WARNING^0] " .. resourceName .. " is ^1NOT ^0up to date!")
+            print("^0[^3WARNING^0] Your Version: ^1" .. curVersion .. "^0")
+            print("^0[^3WARNING^0] Latest Version: ^2" .. repoVersion .. "^0")
+            print("^0[^3WARNING^0] Get the latest Version from: ^2" .. repoURL .. "^0")
+        else
+            Wait(4000)
+            print("^0[^2INFO^0] " .. resourceName .. " is up to date! (^2" .. curVersion .. "^0)")
+        end
+    end)
+end
+function GetRepoInformations()
+    local repoVersion, repoURL, repoBody = nil, nil, nil
+    PerformHttpRequest("https://api.github.com/repos/ScubeScripts/sc_package/releases/latest", function(err, response)
+        if err == 200 then
+            local data = json.decode(response)
+            repoVersion = data.tag_name
+            repoURL = data.html_url
+            repoBody = data.body
+        else
+            repoVersion = curVersion
+            repoURL = "https://github.com/ScubeScripts/sc_package"
+        end
+    end, "GET")
+    repeat
+        Wait(50)
+    until repoVersion and repoURL and repoBody
+    return repoVersion, repoURL, repoBody
+end
