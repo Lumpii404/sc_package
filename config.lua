@@ -11,10 +11,10 @@ Config.Locale = 'en'
 
 Config.Items = {
     ["package1"] = {
-        name = "itemname1",
-        newItem = "newitem1",
-        newItemLabel = "itemname1",
-        newItemCount = 6
+        name = "itemname1", --Package name // name = "Beer crate",
+        newItem = "newitem1", --Item name // newItem = "beer",
+        newItemLabel = "itemname1", --name of the item for notification // newItemLabel = "Beer",
+        newItemCount = 6 --how much you should get from the package // newItemCount = 6
     },
     ["package2"] = {
         name = "itemname2",
