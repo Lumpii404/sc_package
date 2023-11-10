@@ -1,4 +1,4 @@
-# sc_package 1.0.1
+# sc_package 1.0.3
 
 ![Thumbnail (2)](https://github.com/ScubeScripts/sc_package/assets/104854776/cf62c5bb-90ff-4f34-a2f4-747138064185)
 
