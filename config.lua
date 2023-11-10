@@ -9,6 +9,8 @@ Config = {}
 
 Config.Locale = 'en'
 
+Config.Delay = 5000 --How long it takes to open a package default: 5sec
+
 Config.Items = {
     ["package1"] = {
         name = "itemname1", --Package name // name = "Beer crate",
