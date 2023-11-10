@@ -9,7 +9,7 @@ for item, itemData in pairs(Config.Items) do
             
             xPlayer.removeInventoryItem(item, 1)
             TriggerClientEvent('startProgressEvent', -1)
-            Citizen.Wait(5000)
+            Citizen.Wait(Config.Delay)
             xPlayer.addInventoryItem(itemData.newItem, newItemCount)
             
             local message = string.format(Translation[Config.Locale]['text'], newItemCount, itemData.newItemLabel, itemData.name)
